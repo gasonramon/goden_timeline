@@ -1,0 +1,6 @@
+services:
+  tijdlijn:
+    image: jasonleijdekker/tijdlijn:latest
+    restart: unless-stopped
+    ports:
+      - "3001:80"
