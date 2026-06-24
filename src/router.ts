@@ -1,19 +1,21 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHashHistory, createRouter } from 'vue-router'
 
-import Home from './components/Home.vue'
-import DeSchepping from './components/DeSchepping.vue'
-import DeGodenTijd from './components/DeGodenTijd.vue'
-import DeHeldenTijd from './components/DeHeldenTijd.vue'
+import Home from './/views/Home.vue'
+import DeSchepping from './views/DeSchepping.vue'
+import DeGodenTijd from './views/DeGodenTijd.vue'
+import DeHeldenTijd from './views/DeHeldenTijd.vue'
+import Victory from './views/Victory.vue'
 
 const routes = [
   { path: '/', component: Home},
   { path: '/schepping', component: DeSchepping},
   { path: '/godentijd', component: DeGodenTijd},
-  { path: '/heldentijd', component: DeHeldenTijd}
+  { path: '/heldentijd', component: DeHeldenTijd},
+  { path: '/victory', component: Victory},
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 

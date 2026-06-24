@@ -1,10 +1,9 @@
-
 <template>
-    <Timeline />
-    <p>De Schepping</p>
+  <Timeline />
+  <GodenMatchen />
 </template>
 
 <script setup lang="ts">
-import Timeline from './Timeline.vue';
-
+import Timeline from '../components/Timeline.vue'
+import GodenMatchen from '../components/DeScheppingPuzzel.vue'
 </script>
