@@ -81,7 +81,7 @@ const colors = computed(() => [
   '#f5c518', '#ffffff', '#c9a84c',
 ])
 
-function spawnParticle(w: number, h: number) {
+function spawnParticle(w: number, _h: number) {
   const c = colors.value[Math.floor(Math.random() * colors.value.length)]
   particles.push({
     x: Math.random() * w,
