@@ -13,7 +13,8 @@
       :animation="180"
       ghost-class="ghost"
       :move="canMove"
-      @end="checkSolution"
+      @start="onDragStart"
+      @end="onDragEnd"
     >
       <template #item="{ element }">
         <div
@@ -126,6 +127,25 @@ function toggleLock(piece: Piece) {
   const idx = locked.value.indexOf(piece.correctPosition)
   if (idx >= 0) locked.value.splice(idx, 1)
   else locked.value.push(piece.correctPosition)
+}
+
+let dragSnapshot: Piece[] = []
+
+function onDragStart() {
+  dragSnapshot = [...pieces.value]
+}
+
+function onDragEnd() {
+  const arr = [...pieces.value]
+  for (const lockedPos of locked.value) {
+    const origIdx = dragSnapshot.findIndex(p => p.correctPosition === lockedPos)
+    const currIdx = arr.findIndex(p => p.correctPosition === lockedPos)
+    if (origIdx !== -1 && currIdx !== -1 && origIdx !== currIdx) {
+      ;[arr[origIdx], arr[currIdx]] = [arr[currIdx], arr[origIdx]]
+    }
+  }
+  pieces.value = arr
+  checkSolution()
 }
 
 function canMove(evt: any): boolean | void {
